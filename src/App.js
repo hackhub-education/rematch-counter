@@ -1,25 +1,27 @@
 import React from 'react';
+import { init } from '@rematch/core'
+import { Provider } from 'react-redux'
+
 import logo from './logo.svg';
 import './App.css';
 
+import * as models from './models'
+import Count from './Count'
+
+const store = init({
+  models
+})
+
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <header className="App-header">
+          <Count />
+        </header>
+      </div>
+    </Provider>
   );
 }
 
